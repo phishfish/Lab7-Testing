@@ -35,7 +35,7 @@ public class Mortgage extends AbsMortgage implements IMortgage{
 			return false;
 		}
 
-		if((customer.getMonthlyPay() * years)/(customer.getIncome() * years) > DTOITOOHIGH){
+		if((getPayment() * years)/(customer.getIncome() * years) > DTOITOOHIGH){
 			return false;
 		}
 
