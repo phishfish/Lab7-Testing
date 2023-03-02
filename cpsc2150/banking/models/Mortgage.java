@@ -1,11 +1,16 @@
+package cpsc2150.banking.models;
+
 /**
  *
  *@invariants
- *
+ * MIN_YEARS <= years <= MAX_YEARS
+ * homeCost >= 0
+ * downPayment >= 0
  *
  *@correspondence
- *
- *
+ * rate = getRate()
+ * monthllyPayment = getMonthlyPay()
+ * principle = getPrincipal()
  */
 
 public class Mortgage extends AbsMortgage implements IMortgage{
@@ -39,7 +44,7 @@ public class Mortgage extends AbsMortgage implements IMortgage{
 
 	public double getPayment(){
 		double interestRate = getRate();
-		return (interestRate * getPrincipal())/(1 - Math.pow(1 + rate, -1 * years * 12));
+		return (interestRate * getPrincipal())/(1 - Math.pow(1 + interestRate, -1 * years * 12));
 	}
 
 	public double getRate(){
@@ -58,7 +63,7 @@ public class Mortgage extends AbsMortgage implements IMortgage{
 		else if(creditScore < FAIRCREDIT)
 			apr += BADRATEADD;
 		else if(creditScore < GOODCREDIT)
-			apr += FAIRRATEADD;
+			apr += NORMALRATEADD;
 		else if(creditScore < GREATCREDIT)
 			apr += GOODRATEADD;
 
