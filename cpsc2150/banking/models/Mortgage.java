@@ -35,7 +35,7 @@ public class Mortgage extends AbsMortgage implements IMortgage{
 			return false;
 		}
 
-		if((customer.getMonthlyPay() * years)/(customer.getIncome() * years) > 0.40){
+		if((customer.getMonthlyPay() * years)/(customer.getIncome() * years) > DTOITOOHIGH){
 			return false;
 		}
 
@@ -44,18 +44,18 @@ public class Mortgage extends AbsMortgage implements IMortgage{
 
 	public double getPayment(){
 		double interestRate = getRate();
-		return (interestRate * getPrincipal())/(1 - Math.pow(1 + interestRate, -1 * years * 12));
+		return (interestRate/12 * getPrincipal())/(1 - Math.pow(1 + interestRate/12, -1 * years * 12));
 	}
 
 	public double getRate(){
 		double apr = BASERATE;
 		if(years < MAX_YEARS)
-			apr += 0.005;
+			apr += GOODRATEADD; 
 		else
 			apr += 0.01;
 
-		if(homeCost * PREFERRED_PERCENT_DOWN < downPayment)
-			apr += 0.05;
+		if(homeCost * PREFERRED_PERCENT_DOWN > downPayment)
+			apr += GOODRATEADD;
 
 		int creditScore = customer.getCreditScore();
 		if(creditScore < BADCREDIT)

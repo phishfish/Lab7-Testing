@@ -2,6 +2,7 @@ package cpsc2150.banking.models;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import cpsc2150.banking.MortgageApp;
 
 public class TestMortgage {
     // to allow for rounding issues
