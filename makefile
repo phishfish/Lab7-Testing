@@ -1,3 +1,6 @@
+CLASSPATH:=cpsc2150/banking/
+RUNPATH:=cpsc2150.banking.
+
 default: cpsc2150/banking/MortgageApp.java cpsc2150/banking/models/IMortgage.java cpsc2150/banking/models/ICustomer.java cpsc2150/banking/models/AbsMortgage.java cpsc2150/banking/models/AbsCustomer.java cpsc2150/banking/models/Mortgage.java cpsc2150/banking/models/Customer.java
 	javac cpsc2150/banking/MortgageApp.java cpsc2150/banking/models/IMortgage.java cpsc2150/banking/models/ICustomer.java cpsc2150/banking/models/AbsMortgage.java cpsc2150/banking/models/AbsCustomer.java cpsc2150/banking/models/Mortgage.java cpsc2150/banking/models/Customer.java
 	
